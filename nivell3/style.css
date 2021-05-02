@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    color: #fff;
+}
+
+h3 {
+    font-family: 'Archivo Black';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 34px;
+    margin: 6px 0px 18px 0px;
+}
+
+#h3-reg {
+    text-align: center;
+}
+
+h4 {
+    color: #000;
+}
+
+h5 {
+    font-family: 'Archivo Black';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+h6 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin: 18px 0px;
+}
+
+.navbar {
+    height: 100px;
+}
+
+#logo {
+    width: 30px;
+}
+
+.testimonial1 {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.testimonial2 {
+    display: inline-flex;
+    flex-direction: row;
+    margin: 15px 0px 0px 0px;
+}
+
+.foto1 {
+    width: 25%;
+    background-color: gray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.letters1,
+.letters2 {
+    width: 90%;
+    padding: 0px 0px 0px 15px;
+}
+
+.foto2 {
+    width: 25%;
+    background-color: gray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.text1,
+.text2 {
+    margin: 0px 0px 5px 0px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.autor1,
+.autor2 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #808080;
+}
+
+.modal-title,
+.modal-body {
+    color: #000;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#btn-modal-1-2 {
+    margin-right: 10px;
+}
+
+.banner1 {
+    margin: 40px 0px 20px 0px;
+    background: #424242;
+    border: 2px solid #83D825;
+    border-radius: 8px;
+    box-shadow: 8px 8px #9e9e9e;
+}
+
+.banner2 {
+    margin: 8px 0px 40px 0px;
+    background: #424242;
+    border: 2px solid #83D825;
+    border-radius: 8px;
+    box-shadow: 8px 8px #9e9e9e;
+}
+
+#mg-banner {
+    font-family: 'Lato';
+    text-align: center;
+    font-size: 20px;
+    padding: 30px 10px 10px 10px;
+}
+
+#btn-blog {
+    padding: 0 0 30px 0;
+}
+
+#btn-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+#footer {
+    margin: 0 0 30px 0;
+    bottom: 0;
+}
+
+#footer-text {
+    color: #fff;
+    font-family: 'Open Sans';
+}
+
+@media (max-width: 991px) {
+    h3,
+    h5,
+    h6 {
+        text-align: center;
+    }
+}
