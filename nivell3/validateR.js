@@ -1,5 +1,11 @@
 const form3 = document.getElementById('myFormIdR');
 
+bienEmail.textContent = "H";
+bienPassword.textContent = "H";
+bienRP.textContent = "H";
+bienProvince.textContent = "H";
+bienZip.textContent = "H";
+
 function valForm() {
     let acumErrores = 0;
 
@@ -12,66 +18,52 @@ function valForm() {
     let inputZip = document.forms["myFormIdR"]["inputZip"];
 
     if (inputEmail.value == "") {
-        inputEmail.classList.add("is-invalid");
-        document.getElementById("errorEmail").textContent = "Aquest camp és obligatori";
+        factorIf(bienEmail, inputEmail, errorEmail, messageCaption.obligatori);
         acumErrores++;
     } else if (!validar_email(inputEmail.value)) {
-        inputEmail.classList.add("is-invalid");
-        document.getElementById("errorEmail").textContent = "Introdueix un correu electrònic vàlid";
+        factorElseIf(inputEmail, errorEmail, messageCaption.emailValid, bienEmail);
         acumErrores++;
     } else {
-        inputEmail.classList.remove("is-invalid");
-        document.getElementById("errorEmail").textContent = "";
+        factorElse(inputEmail, errorEmail, bienEmail);
         document.getElementById("resultat-email").innerHTML = inputEmail.value;
     }
 
     if (inputPassword.value == "") {
-        inputPassword.classList.add("is-invalid");
-        document.getElementById("errorPassword").textContent = "Aquest camp és obligatori";
+        factorIf(bienPassword, inputPassword, errorPassword, messageCaption.obligatori);
         acumErrores++;
     } else if (!validar_password(inputPassword.value)) {
-        inputPassword.classList.add("is-invalid");
-        document.getElementById("errorPassword").textContent = "La contrasenya ha de tenir almenys 8 caràcters (amb 1 majúscula i 1 nombre)";
+        factorElseIf(inputPassword, errorPassword, messageCaption.passwordMinim, bienPassword);
         acumErrores++;
     } else {
-        inputPassword.classList.remove("is-invalid");
-        document.getElementById("errorPassword").textContent = "";
+        factorElse(inputPassword, errorPassword, bienPassword);
     }
 
     if (inputRepeatPassword.value == "") {
-        inputRepeatPassword.classList.add("is-invalid");
-        document.getElementById("errorRepeatPassword").textContent = "Aquest camp és obligatori";
+        factorIf(bienRP, inputRepeatPassword, errorRepeatPassword, messageCaption.obligatori);
         acumErrores++;
     } else if (inputRepeatPassword.value != inputPassword.value) {
-        inputRepeatPassword.classList.add("is-invalid");
-        document.getElementById("errorRepeatPassword").textContent = "Les dues contrasenyes no coincideixen";
+        factorElseIf(inputRepeatPassword, errorRepeatPassword, messageCaption.passwordCoincideix, bienRP);
         acumErrores++;
     } else {
-        inputRepeatPassword.classList.remove("is-invalid");
-        document.getElementById("errorRepeatPassword").textContent = "";
+        factorElse(inputRepeatPassword, errorRepeatPassword, bienRP);
     }
 
     if (inputProvince.value == "") {
-        inputProvince.classList.add("is-invalid");
-        document.getElementById("errorProvince").textContent = "Aquest camp és obligatori";
+        factorIf(bienProvince, inputProvince, errorProvince, messageCaption.obligatori);
         acumErrores++;
     } else {
-        inputProvince.classList.remove("is-invalid");
-        document.getElementById("errorProvince").textContent = "";
+        factorElse(inputProvince, errorProvince, bienProvince);
         document.getElementById("resultat-provincia").innerHTML = inputProvince.value;
     }
 
     if (inputZip.value == "") {
-        inputZip.classList.add("is-invalid");
-        document.getElementById("errorZip").textContent = "Aquest camp és obligatori";
+        factorIf(bienZip, inputZip, errorZip, messageCaption.obligatori);
         acumErrores++;
     } else if (inputZip.value.length != 5) {
-        inputZip.classList.add("is-invalid");
-        document.getElementById("errorZip").textContent = "Introdueix un codi postal vàlid";
+        factorElseIf(inputZip, errorZip, messageCaption.zipValid, bienZip);
         acumErrores++;
     } else {
-        inputZip.classList.remove("is-invalid");
-        document.getElementById("errorZip").textContent = "";
+        factorElse(inputZip, errorZip, bienZip);
         document.getElementById("resultat-zipcode").innerHTML = inputZip.value;
     }
 
@@ -82,6 +74,32 @@ function valForm() {
     }
 }
 
+function factorIf(messageBien, inputType, messageError, messageCaption) {
+    messageBien.textContent = "";
+    inputType.classList.add("is-invalid");
+    messageError.textContent = messageCaption;
+}
+
+function factorElseIf(inputType, messageError, messageCaption, messageBien) {
+    inputType.classList.add("is-invalid");
+    messageError.textContent = messageCaption;
+    messageBien.textContent = "";
+}
+
+function factorElse(inputType, messageError, messageBien) {
+    inputType.classList.remove("is-invalid");
+    messageError.textContent = "";
+    messageBien.textContent = "H";
+}
+
+let messageCaption = {
+    obligatori: "Aquest camp és obligatori",
+    emailValid: "Introdueix un correu electrònic vàlid",
+    passwordMinim: "La contrasenya ha de tenir almenys 8 caràcters (amb 1 majúscula i 1 nombre)",
+    passwordCoincideix: "Les dues contrasenyes no coincideixen",
+    zipValid: "Introdueix un codi postal vàlid"
+}
+
 $('a[href$="#Modal"]').on("click", function() {
     if (valForm()) {
         $('#Modal').modal('show');
@@ -89,7 +107,7 @@ $('a[href$="#Modal"]').on("click", function() {
 });
 
 function validar_email(email) {
-    var regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(email) ? true : false;
 }
 
